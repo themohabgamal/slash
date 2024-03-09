@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:slash/core/theme/my_fonts.dart';
 import 'package:slash/features/home/data/api/home_api.dart';
 import 'package:slash/features/home/ui/widgets/inital/app_bar.dart';
 import 'package:slash/features/home/ui/widgets/inital/build_product_grid.dart';

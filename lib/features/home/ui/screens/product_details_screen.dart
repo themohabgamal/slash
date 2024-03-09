@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:slash/core/theme/my_fonts.dart';
 import 'package:slash/features/home/data/api/home_api.dart';
 import 'package:slash/features/home/data/models/product.dart';

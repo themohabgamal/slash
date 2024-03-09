@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:slash/core/theme/my_colors.dart';
 import 'package:slash/core/theme/my_fonts.dart';
 import 'package:slash/features/home/data/models/product_details.dart';
 
@@ -9,10 +8,10 @@ class ProductColorSelector extends StatefulWidget {
   const ProductColorSelector({super.key, required this.productDetails});
 
   @override
-  _ProductColorSelectorState createState() => _ProductColorSelectorState();
+  ProductColorSelectorState createState() => ProductColorSelectorState();
 }
 
-class _ProductColorSelectorState extends State<ProductColorSelector> {
+class ProductColorSelectorState extends State<ProductColorSelector> {
   int selectedColorIndex = 0; // Index of the selected color
   List<String?> colors = []; // Replace with your actual colors
 
@@ -67,7 +66,6 @@ class _ProductColorSelectorState extends State<ProductColorSelector> {
   }
 
   Widget buildColorContainer(int index) {
-    bool isSelected = index == selectedColorIndex;
     Color myColor =
         Color(0xFF + int.parse(colors[index]!.substring(1), radix: 16));
 
