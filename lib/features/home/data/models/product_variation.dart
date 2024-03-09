@@ -1,48 +1,58 @@
+import 'package:slash/features/home/data/models/product_status_lookup.dart';
 import 'package:slash/features/home/data/models/product_variant_image.dart';
 
 class ProductVariation {
-  final int id;
-  final int productId;
-  final double price;
-  final int quantity;
-  final bool isDefault;
-  final DateTime? deletedAt;
-  final DateTime createdAt;
-  final DateTime updatedAt;
-  final int productVariationStatusId;
-  final String? acceptedBy;
-  final List<ProductVariantImage> productVarientImages;
+  int? id;
+  int? productId;
+  double? price;
+  int? quantity;
+  bool? isDefault;
+  DateTime? deletedAt;
+  DateTime? createdAt;
+  DateTime? updatedAt;
+  ProductStatusLookup? productStatusLookup;
+  List<ProductVarientImage>? productVarientImages;
 
   ProductVariation({
-    required this.id,
-    required this.productId,
-    required this.price,
-    required this.quantity,
-    required this.isDefault,
+    this.id,
+    this.productId,
+    this.price,
+    this.quantity,
+    this.isDefault,
     this.deletedAt,
-    required this.createdAt,
-    required this.updatedAt,
-    required this.productVariationStatusId,
-    this.acceptedBy,
-    required this.productVarientImages,
+    this.createdAt,
+    this.updatedAt,
+    this.productStatusLookup,
+    this.productVarientImages,
   });
 
   factory ProductVariation.fromJson(Map<String, dynamic> json) {
-    return ProductVariation(
-      id: json['id'],
-      productId: json['product_id'],
-      price: json['price'].toDouble(),
-      quantity: json['quantity'],
-      isDefault: json['is_default'],
-      deletedAt:
-          json['deletedAt'] != null ? DateTime.parse(json['deletedAt']) : null,
-      createdAt: DateTime.parse(json['createdAt']),
-      updatedAt: DateTime.parse(json['updatedAt']),
-      productVariationStatusId: json['product_variation_status_id'],
-      acceptedBy: json['accepted_by'],
-      productVarientImages: (json['ProductVarientImages'] as List<dynamic>)
-          .map((v) => ProductVariantImage.fromJson(v))
-          .toList(),
-    );
+    try {
+      return ProductVariation(
+        id: json['id'],
+        productId: json['product_id'],
+        price: (json['price'] ?? 0).toDouble(),
+        quantity: json['quantity'],
+        isDefault: json['is_default'],
+        deletedAt: json['deletedAt'] != null
+            ? DateTime.parse(json['deletedAt'])
+            : null,
+        createdAt: json['createdAt'] != null
+            ? DateTime.parse(json['createdAt'])
+            : null,
+        updatedAt: json['updatedAt'] != null
+            ? DateTime.parse(json['updatedAt'])
+            : null,
+        productStatusLookup: json['ProductStatusLookups'] != null
+            ? ProductStatusLookup.fromJson(json['ProductStatusLookups'])
+            : null,
+        productVarientImages: (json['ProductVarientImages'] as List<dynamic>?)
+            ?.map((image) => ProductVarientImage.fromJson(image))
+            .toList(),
+      );
+    } catch (e) {
+      print("productVariation : $e");
+      rethrow;
+    }
   }
 }

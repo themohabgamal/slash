@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slash/core/routing/routes.dart';
-import 'package:slash/features/home/ui/screens/details_screen.dart';
+import 'package:slash/features/home/ui/screens/product_details_screen.dart';
 import 'package:slash/features/home/ui/screens/initial_screen.dart';
 
 class AppRouter {
@@ -14,7 +14,7 @@ class AppRouter {
       // If Details Screen
       case Routes.details:
         return MaterialPageRoute(
-          builder: (context) => const DetailsScreen(),
+          builder: (context) => const ProductDetailsScreen(),
         );
       // If None Of the above screens
       default:

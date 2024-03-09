@@ -1,23 +1,20 @@
-class ProductVarientImage {
+class ProductStatusLookup {
   int? id;
-  String? imagePath;
-  int? productVarientId;
+  String? name;
   DateTime? createdAt;
   DateTime? updatedAt;
 
-  ProductVarientImage({
+  ProductStatusLookup({
     this.id,
-    this.imagePath,
-    this.productVarientId,
+    this.name,
     this.createdAt,
     this.updatedAt,
   });
 
-  factory ProductVarientImage.fromJson(Map<String, dynamic> json) {
-    return ProductVarientImage(
+  factory ProductStatusLookup.fromJson(Map<String, dynamic> json) {
+    return ProductStatusLookup(
       id: json['id'],
-      imagePath: json['image_path'],
-      productVarientId: json['product_varient_id'],
+      name: json['name'],
       createdAt:
           json['createdAt'] != null ? DateTime.parse(json['createdAt']) : null,
       updatedAt:
